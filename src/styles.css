@@ -16,6 +16,9 @@
 }
 
 :root {
+    /* Foreground size */
+    --fg-size: 1rem;
+
     /* Foregorund colors */
     --fg-primary-color: #f0f6fc;
     --fg-secondary-color: #9198a1;
@@ -27,6 +30,10 @@
 
     /* Font style */
     --font: Verdana;
+
+    /* Border colors */
+    --border-line-default: #9198a1;
+    --border-line-focused: #0104a2;
 }
 
 html {
@@ -59,6 +66,12 @@ header {
 
 main {
     grid-area: content;
+    display: grid;
+    grid-template-rows: 110px 1fr;
+    grid-area: 
+        "search-box"
+        "content"
+    ;
 }
 
 footer {
@@ -80,6 +93,33 @@ footer {
 
 /* Content */
 
+/* Search box */
+.search-box {
+    width: 390px;
+    height: 2.6rem;
+    align-self: center;
+    justify-self: center;
+    border: 0.8px solid var(--border-line-default);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    padding: 0 8px 0 6px;
+}
+
+.search-box:focus-within {
+    border: 1.2px solid var(--border-line-focused); 
+}
+
+.search-box > #search-input {
+    flex-grow: 1;
+    line-height: 1.4rem;
+    background: none;
+    border: none;
+    outline: none;
+    font-size: var(--fg-size);
+    padding-left: 5px;
+    color: var(--fg-primary-color);
+}
 
 /* Developer tag */
 .dev-tag {
