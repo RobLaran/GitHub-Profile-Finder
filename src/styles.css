@@ -1,3 +1,78 @@
-body {
-    background-color: dimgray;
+/* 
+    Foregound Colors
+    Primary color: #f0f6fc
+    Secondary color: #9198a1
+    Tertiary color: #4493f8
+
+    Background Colors
+    Body color: #0d1117
+    Header color: #010409
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
+:root {
+    /* Foregorund colors */
+    --fg-primary-color: #f0f6fc;
+    --fg-secondary-color: #9198a1;
+    --fg-tertiary-color: #4493f8;
+
+    /* Background colors */
+    --bg-header-color: #010409;
+    --bg-body-color: #0d1117;
+
+    /* Font style */
+    --font: Verdana;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    background-color: var(--bg-body-color);
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 88px repeat(4, 1fr) 88px;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+header {
+    background-color: var(--bg-header-color);
+
+    grid-area: 1 / 1 / 2 / 4;
+
+    color: var(--fg-primary-color);
+}
+
+main {
+    grid-area: 6 / 1 / 7 / 4;
+}
+
+footer {
+    grid-area: 2 / 1 / 6 / 4;
+}
+
+/* Brand styles */
+.brand {
+    height: 100%;
+    display: flex;
+
+    align-items: center;
+
+    padding-left: 48px;
+
+    font-family: var(--font);
+}
+
+.brand > h2 {
+    margin-left: 8px;
+}
+
