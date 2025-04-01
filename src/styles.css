@@ -17,7 +17,7 @@
 
 :root {
     /* Foreground size */
-    --fg-size: 1rem;
+    --fg-size-default: 1rem;
 
     /* Foregorund colors */
     --fg-primary-color: #f0f6fc;
@@ -95,7 +95,7 @@ footer {
 
 /* Search box */
 .search-box {
-    width: 390px;
+    min-width: 390px;
     height: 2.6rem;
     align-self: center;
     justify-self: center;
@@ -112,11 +112,12 @@ footer {
 
 .search-box > #search-input {
     flex-grow: 1;
+    flex-shrink: 1;
     line-height: 1.4rem;
     background: none;
     border: none;
     outline: none;
-    font-size: var(--fg-size);
+    font-size: var(--fg-size-default);
     padding-left: 5px;
     color: var(--fg-primary-color);
 }
@@ -136,3 +137,14 @@ footer {
     margin: auto;
 }
 
+/* Media query for responsiveness set at 600px */
+@media (max-width: 600px) {
+    main {
+        padding: 0 16px 0 16px;
+    }
+
+    .search-box {
+      min-width: 200px; /* Adjust as needed */
+      width: 100%; /* Full width */
+    }
+  }
