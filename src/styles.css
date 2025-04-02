@@ -149,7 +149,7 @@ footer {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: auto auto auto;
-    column-gap: 8px;
+    column-gap: 18px;
     row-gap: 8px;
     grid-template-areas: 
         "profile-image profile-names profile-names profile-names profile-names"
@@ -205,6 +205,10 @@ footer {
     color: var(--fg-secondary-color);
     display: flex;
     align-items: center;
+}
+
+.profile > .profile-info > .address {
+    max-width: 140px;
 }
 
 .profile > .profile-info > .delimiter {
