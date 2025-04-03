@@ -40,6 +40,7 @@ const renderProfile = function(profileData) {
         const userName = document.createElement('a');
         userName.className = 'user-name name';
         userName.textContent = profileData.userName;
+        userName.title = profileData.userName;
         profileNames.appendChild(userName);
     }
 
@@ -47,6 +48,7 @@ const renderProfile = function(profileData) {
         const loginName = document.createElement('span');
         loginName.className = 'login-name name';
         loginName.textContent = profileData.loginName;
+        loginName.title = profileData.loginName;
         profileNames.appendChild(loginName);
     }
 
@@ -62,10 +64,12 @@ const renderProfile = function(profileData) {
     const address = document.createElement('li');
     address.className = 'address';
     address.innerHTML = profileData.address || 'No address';
+    address.title = address.innerHTML;
 
     const repositories = document.createElement('li');
     repositories.className = 'repositories';
-    repositories.innerHTML = formatNumber(profileData.repositories) || '0';
+    repositories.innerHTML = formatNumber(profileData.repositories || 0);
+    repositories.title = profileData.repositories || '0';
 
     const repoIcon = document.createElement('img');
     repoIcon.className = 'repo-icon';
@@ -73,7 +77,8 @@ const renderProfile = function(profileData) {
 
     const followers = document.createElement('li');
     followers.className = 'followers';
-    followers.innerHTML = formatNumber(profileData.followers) || '0';
+    followers.innerHTML = formatNumber(profileData.followers || 0);
+    followers.title = profileData.followers || '0';
 
     const followersIcon = document.createElement('img');
     followersIcon.className = 'followers-icon';

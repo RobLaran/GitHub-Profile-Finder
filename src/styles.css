@@ -131,21 +131,22 @@ footer {
 .profiles {
     grid-area: profiles;
     height: 100%;
+    padding: 16px;
 }
 
 .profiles > #profile-list {
-    max-height: 100%;
-    display: grid;
-    grid-auto-rows: minmax(min-content, max-content);
-    grid-row-gap: 16px;
+    column-count: 4;
+    column-gap: 16px;
 }
 
 .profiles > #profile-list > .profile {
+    break-inside: avoid;
     list-style: none;
-    width: 440px;
+    max-width: 360px;
+    padding: 18px;
+    margin-bottom: 16px;
     border: 0.8px solid var(--border-line-default);
     border-radius: 8px;
-    justify-self: center;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: auto auto auto;
@@ -155,7 +156,6 @@ footer {
         "profile-image profile-names profile-names profile-names profile-names"
         "profile-image profile-bio profile-bio profile-bio profile-bio"
         "profile-image profile-info profile-info profile-info profile-info";
-    padding: 18px;
 }
 
 .profile > * {
@@ -170,6 +170,7 @@ footer {
     object-fit: cover;
     background-color: none;
     border-radius: 50%;
+    justify-self: center;
 }
 
 .profile > .profile-names {
@@ -182,7 +183,7 @@ footer {
 }
 
 .profile > .profile-names > .name {
-    max-width: 130px;
+    min-width: 30px;
     text-decoration: none;
     text-wrap: nowrap;
     text-overflow: ellipsis;
@@ -218,10 +219,11 @@ footer {
     color: var(--fg-secondary-color);
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .profile > .profile-info > .address {
-    max-width: 160px;
+    min-width: 40px;
     text-wrap: nowrap;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -259,13 +261,33 @@ footer {
 }
 
 /* Media query for responsiveness set at 600px */
-@media (max-width: 600px) {
+@media (max-width: 1300px) {
+    .profiles > #profile-list {
+        column-count: 3;
+    }
+}
+
+@media (max-width: 1000px) {
+    .profiles > #profile-list {
+        column-count: 2;
+    }
+
+    .profiles > #profile-list > .profile {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 700px) {
     main {
         padding: 0 16px 0 16px;
+    }
+
+    .profiles > #profile-list {
+        column-count: 1;
     }
 
     .search-box {
         min-width: 200px; 
         width: 100%; 
     }
-  }
+}

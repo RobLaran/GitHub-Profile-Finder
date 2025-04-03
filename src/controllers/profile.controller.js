@@ -1,4 +1,4 @@
-import { renderProfile, renderUsers } from "../views/profile.view";
+import { renderUsers } from "../views/profile.view";
 import { loadUser, getUsers } from "../models/profile.model";
 
 const profileController = (function() {
