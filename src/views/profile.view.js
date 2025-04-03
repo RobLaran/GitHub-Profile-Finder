@@ -3,7 +3,9 @@ import { getIconSVG } from "../utils/helpers";
 const profiles = document.querySelector('#profile-list');
 
 const renderUsers = function(users) {
-
+    for(let user of users) {
+        renderProfile(user);
+    }
 };
 
 const renderProfile = function(profileData) {
@@ -93,4 +95,7 @@ const renderProfile = function(profileData) {
     profiles.append(list);
 }
 
-export { renderProfile };
+export { 
+    renderProfile,
+    renderUsers
+};

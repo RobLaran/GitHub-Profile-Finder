@@ -23,7 +23,7 @@ const loadUser = async function(name) {
 
 const getUsers = async function(name) {
     const users = await fetchUsers(name);
-    
+
     return users;
 };
 
