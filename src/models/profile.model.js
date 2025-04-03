@@ -1,30 +1,30 @@
-import { fetchUser } from "../api/github.api";
+import { fetchUser, fetchUsers } from "../api/github.api";
 
-const profile = (function() {
-    let data = null;
+const formatProfile = function(data) {
+    if(!data) return null;
 
-    const formatProfile = function() {
-        if(!data) return null;
-
-        return {
-            'loginName': data.login,
-            'userName': data.name,
-            'bio': data.bio,
-            'address': data.location,
-            'repositories': data.public_repos,
-            'followers': data.followers,
-            'avatarImage': data.avatar_url
-        };
+    return {
+        'loginName': data.login || null,
+        'userName': data.name || null,
+        'bio': data.bio || null,
+        'address': data.location || null,
+        'repositories': data.public_repos || null,
+        'followers': data.followers || null,
+        'avatarImage': data.avatar_url || null
     };
+};
 
-    const loadUser = async function(name) {
-        data = await fetchUser(name);
-        const user = formatProfile();
+const loadUser = async function(name) {
+    const data = await fetchUser(name);
+    const user = formatProfile(data);
 
-        return user;
-    };
+    return user;
+};
 
-    return { loadUser };
-})();
+const getUsers = async function(name) {
+    const users = await fetchUsers(name);
+    
+    return users;
+};
 
-export default profile;
+export { loadUser, getUsers };

@@ -6,13 +6,13 @@ export const fetchUser = async (name) => {
     const data = fetch(REQUEST_URL, {mode: 'cors'});
     const user = (await data).json();
 
-    return await user;
+    return user;
 };
 
 export const fetchUsers = async (name) => {
     const REQUEST_URL = API_URL_USERS + name + '&per_page=16'; 
     const data = await fetch(REQUEST_URL, {mode: 'cors'});
-    const users = (await data).json();
+    const users = (await data.json).items;
 
-    return await users;
+    return users;
 };

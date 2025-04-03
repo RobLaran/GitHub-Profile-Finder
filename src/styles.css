@@ -168,12 +168,17 @@ footer {
     width: 80px; /* Adjust as needed */
     height: 80px;
     object-fit: cover;
-    background-color: #0104a2;
+    background-color: none;
     border-radius: 50%;
 }
 
 .profile > .profile-names {
     grid-area: profile-names;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    column-gap: 8px;
 }
 
 .profile > .profile-names > .user-name {
@@ -209,6 +214,13 @@ footer {
 
 .profile > .profile-info > .address {
     max-width: 140px;
+}
+
+.profile > .profile-info > .repo-icon,
+.profile > .profile-info > .followers-icon {
+    width: 18px;
+    height: 18px;
+    padding-right: 4px;
 }
 
 .profile > .profile-info > .delimiter {
