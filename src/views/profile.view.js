@@ -69,7 +69,7 @@ const renderProfile = function(profileData) {
     const repositories = document.createElement('li');
     repositories.className = 'repositories';
     repositories.innerHTML = formatNumber(profileData.repositories || 0);
-    repositories.title = profileData.repositories || '0';
+    repositories.title = (profileData.repositories || '0') + ' repositories';
 
     const repoIcon = document.createElement('img');
     repoIcon.className = 'repo-icon';
@@ -78,7 +78,7 @@ const renderProfile = function(profileData) {
     const followers = document.createElement('li');
     followers.className = 'followers';
     followers.innerHTML = formatNumber(profileData.followers || 0);
-    followers.title = profileData.followers || '0';
+    followers.title = (profileData.followers || '0') + ' followers';
 
     const followersIcon = document.createElement('img');
     followersIcon.className = 'followers-icon';

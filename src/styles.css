@@ -136,7 +136,6 @@ footer {
 
 .profiles > #profile-list {
     column-count: 4;
-    column-gap: 16px;
 }
 
 .profiles > #profile-list > .profile {
@@ -147,6 +146,7 @@ footer {
     margin-bottom: 16px;
     border: 0.8px solid var(--border-line-default);
     border-radius: 8px;
+    justify-self: center;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: auto auto auto;
@@ -223,7 +223,7 @@ footer {
 }
 
 .profile > .profile-info > .address {
-    min-width: 40px;
+    min-width: 25px;
     text-wrap: nowrap;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -265,15 +265,15 @@ footer {
     .profiles > #profile-list {
         column-count: 3;
     }
+
+    .profiles > #profile-list > .profile {
+        max-width: 100%;
+    }
 }
 
 @media (max-width: 1000px) {
     .profiles > #profile-list {
         column-count: 2;
-    }
-
-    .profiles > #profile-list > .profile {
-        max-width: 100%;
     }
 }
 
@@ -284,6 +284,10 @@ footer {
 
     .profiles > #profile-list {
         column-count: 1;
+    }
+
+    .profiles > #profile-list > .profile {
+        max-width: 100%;
     }
 
     .search-box {
