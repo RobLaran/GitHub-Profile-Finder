@@ -2,7 +2,19 @@ import { getIconSVG } from "../utils/helpers";
 
 const profiles = document.querySelector('#profile-list');
 
+const clearList = function() {
+    const items = document.querySelectorAll('.profile');
+
+    if(items) {
+        for(let item of items) {
+            profiles.removeChild(item);
+        }
+    }
+};
+
 const renderUsers = function(users) {
+    clearList();
+
     for(let user of users) {
         renderProfile(user);
     }
@@ -10,7 +22,7 @@ const renderUsers = function(users) {
 
 const renderProfile = function(profileData) {
     if(!profileData) return null;
-
+    
     const list = document.createElement('li');
     list.className = 'profile';
 
@@ -93,7 +105,7 @@ const renderProfile = function(profileData) {
     );
 
     profiles.append(list);
-}
+};
 
 export { 
     renderProfile,

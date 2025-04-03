@@ -2,6 +2,8 @@ import { renderProfile, renderUsers } from "../views/profile.view";
 import { loadUser, getUsers } from "../models/profile.model";
 
 const profileController = (function() {
+    const searchInput = document.querySelector('#search-input');
+
     const seearchUser = async function(name) {
         const users = [];
         const usernames = (await getUsers(name)).map((user) => user.login);
@@ -15,8 +17,20 @@ const profileController = (function() {
         renderUsers(users);
     };
 
+    const handleSearchEvent = function() {
+        searchInput.addEventListener('keypress', async (event) => {
+            const value = searchInput.value.trim() || null;
+
+            if(event.key === 'Enter' && value) {
+                event.preventDefault();
+                await seearchUser(value);
+            }
+            
+        });
+    };
+
     const init = async function() {
-        await seearchUser('Felix Yan');
+        handleSearchEvent();
     };
 
     return { init };
