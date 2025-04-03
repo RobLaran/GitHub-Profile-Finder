@@ -1,4 +1,4 @@
-import { getIconSVG } from "../utils/helpers";
+import { formatNumber, getIconSVG } from "../utils/helpers";
 
 const profiles = document.querySelector('#profile-list');
 
@@ -22,7 +22,7 @@ const renderUsers = function(users) {
 
 const renderProfile = function(profileData) {
     if(!profileData) return null;
-    
+
     const list = document.createElement('li');
     list.className = 'profile';
 
@@ -65,7 +65,7 @@ const renderProfile = function(profileData) {
 
     const repositories = document.createElement('li');
     repositories.className = 'repositories';
-    repositories.innerHTML = profileData.repositories || '0';
+    repositories.innerHTML = formatNumber(profileData.repositories) || '0';
 
     const repoIcon = document.createElement('img');
     repoIcon.className = 'repo-icon';
@@ -73,7 +73,7 @@ const renderProfile = function(profileData) {
 
     const followers = document.createElement('li');
     followers.className = 'followers';
-    followers.innerHTML = profileData.followers || '0';
+    followers.innerHTML = formatNumber(profileData.followers) || '0';
 
     const followersIcon = document.createElement('img');
     followersIcon.className = 'followers-icon';

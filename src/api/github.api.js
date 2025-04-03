@@ -3,6 +3,7 @@ import { Octokit } from 'octokit';
 const header = {
     'X-GitHub-Api-Version': '2022-11-28'
 };
+
 const kit = new Octokit({
     auth: process.env.TOKEN,
 });
@@ -19,7 +20,7 @@ export const fetchUser = async (name) => {
 export const fetchUsers = async (name) => {
     const RESPONSE = await kit.request('GET /search/users', {
         q: name,
-        per_page: 5,
+        per_page: 15,
         headers: header
       });
 
