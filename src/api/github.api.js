@@ -20,7 +20,7 @@ export const fetchUser = async (name) => {
 export const fetchUsers = async (name) => {
     const RESPONSE = await kit.request('GET /search/users', {
         q: name,
-        per_page: 15,
+        per_page: 150,
         headers: header
       });
 

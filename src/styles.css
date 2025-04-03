@@ -181,10 +181,18 @@ footer {
     column-gap: 8px;
 }
 
+.profile > .profile-names > .name {
+    max-width: 130px;
+    text-decoration: none;
+    text-wrap: nowrap;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
 .profile > .profile-names > .user-name {
     font-weight: 700;
     color: var(--fg-tertiary-color);
-    text-decoration: none;
 }
 
 .profile > .profile-names > .user-name:hover {
@@ -214,6 +222,10 @@ footer {
 
 .profile > .profile-info > .address {
     max-width: 160px;
+    text-wrap: nowrap;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .profile > .profile-info > .repo-icon,

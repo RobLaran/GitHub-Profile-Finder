@@ -3,30 +3,46 @@ import { loadUser, getUsers } from "../models/profile.model";
 
 const profileController = (function() {
     const searchInput = document.querySelector('#search-input');
+    let debounceTimeout;
 
-    const seearchUser = async function(name) {
-        const users = [];
-        const usernames = (await getUsers(name)).map((user) => user.login);
+    // Optimized function to fetch users concurrently
+    const searchUser = async function(name) {
+        try {
+            console.log('Fetching user list...');
+            const usersData = await getUsers(name);
 
-        for(let name of usernames) {
-            console.log('Fetching user data');
-            const user = await loadUser(name);
-            users.push(user);
+            if (!usersData.length) {
+                console.warn('No users found.');
+                renderUsers([]); // Show empty state
+                return;
+            }
+
+            // Fetch detailed user profiles in parallel
+            console.log('Fetching user details...');
+            const users = await Promise.all(usersData.map(user => loadUser(user.login)));
+
+            renderUsers(users);
+        } catch (error) {
+            console.error("Error fetching users:", error);
         }
-
-        renderUsers(users);
     };
 
-    const handleSearchEvent = function() {
-        searchInput.addEventListener('keypress', async (event) => {
-            const value = searchInput.value.trim() || null;
+    // Debounce function to limit API calls
+    const debounce = (func, delay) => {
+        return (...args) => {
+            clearTimeout(debounceTimeout);
+            debounceTimeout = setTimeout(() => func(...args), delay);
+        };
+    };
 
-            if(event.key === 'Enter' && value) {
-                event.preventDefault();
-                await seearchUser(value);
+    // Handle user search with debounce
+    const handleSearchEvent = function() {
+        searchInput.addEventListener('input', debounce(async (event) => {
+            const value = searchInput.value.trim();
+            if (value) {
+                await searchUser(value);
             }
-            
-        });
+        }, 500)); // 500ms delay
     };
 
     const init = async function() {

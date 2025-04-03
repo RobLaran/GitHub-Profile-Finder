@@ -38,14 +38,14 @@ const renderProfile = function(profileData) {
 
     if(profileData.userName !== null) {
         const userName = document.createElement('a');
-        userName.className = 'user-name';
+        userName.className = 'user-name name';
         userName.textContent = profileData.userName;
         profileNames.appendChild(userName);
     }
 
     if(profileData.loginName != null) {
         const loginName = document.createElement('span');
-        loginName.className = 'login-name';
+        loginName.className = 'login-name name';
         loginName.textContent = profileData.loginName;
         profileNames.appendChild(loginName);
     }
