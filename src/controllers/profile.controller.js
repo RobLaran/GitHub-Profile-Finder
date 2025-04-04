@@ -1,4 +1,4 @@
-import { clearList, hideEmptyListMessage, renderUsers, showEmptyListMessage } from "../views/profile.view";
+import { clearList, hideEmptyListMessage, hideLoading, renderUsers, showEmptyListMessage, showLoading } from "../views/profile.view";
 import { loadUser, getUsers } from "../models/profile.model";
 
 const profileController = (function() {
@@ -8,12 +8,14 @@ const profileController = (function() {
     // Optimized function to fetch users concurrently
     const searchUser = async function(name) {
         try {
+            showLoading();
             console.log('Fetching user list...');
             const usersData = await getUsers(name);
 
             if (!usersData.length) {
                 console.warn('No users found.');
                 renderUsers([]); // Show empty state
+                hideLoading();
                 return;
             }
 
@@ -24,6 +26,8 @@ const profileController = (function() {
             renderUsers(users);
         } catch (error) {
             console.error("Error fetching users:", error);
+        } finally {
+            hideLoading();
         }
     };
 
@@ -39,11 +43,11 @@ const profileController = (function() {
     const handleSearchEvent = function() {
         searchInput.addEventListener('input', debounce(async (event) => {
             const value = searchInput.value.trim();
+            clearList();
             hideEmptyListMessage();
             if(value) {
                 await searchUser(value);
             } else {
-                clearList();
                 showEmptyListMessage();
             }
         }, 500)); // 500ms delay

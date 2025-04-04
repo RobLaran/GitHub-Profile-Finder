@@ -1,8 +1,6 @@
 const numeral = require('numeral'); 
 
-export const getIconSVG = icon => require(`../assets/icons/svgs/${icon}.svg`);
-
-export const getIconPNG = icon => require(`../assets/icons/${icon}.png`);
+export const getImage = imgPath => require(`../assets/images/${imgPath}`);
 
 export const formatNumber = num => {
     let length = String(num).length;

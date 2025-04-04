@@ -148,6 +148,19 @@ footer {
     padding-top: 28px;
 }
 
+#loading-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    z-index: 1000;
+}
+
+#loading-img {
+    width: 250px;
+    margin: auto;
+}
+
 .profiles > #profile-list > .profile {
     break-inside: avoid;
     list-style: none;

@@ -1,4 +1,4 @@
-import { formatNumber, getIconSVG } from "../utils/helpers";
+import { formatNumber, getImage } from "../utils/helpers";
 
 const profiles = document.querySelector('#profile-list');
 
@@ -12,13 +12,31 @@ const clearList = function() {
     }
 };
 
+const showLoading = function() {
+    const loadingContainer = document.createElement('div');
+    loadingContainer.id = 'loading-container';
+
+    const loading = document.createElement('img');
+    loading.id = 'loading-img';
+    loading.src = getImage('gif/github-cat.gif');
+
+    loadingContainer.appendChild(loading);
+    document.body.appendChild(loadingContainer);
+};
+
+const hideLoading = function() {
+    if(document.querySelector('#loading-container')) {
+        document.body.removeChild(document.querySelector('#loading-container'));
+    }
+};
+
 const showEmptyListMessage = function() {
     const items = document.querySelectorAll('.profile');
     const message = document.createElement('div');
     message.id = 'empty-list-message';
     message.innerHTML = 'No results. Search a name.';
 
-    if(!items.length) {
+    if(!items.length && !document.querySelector('#loading-container')) {
         console.log('Empty result');
         profiles.appendChild(message);
     } 
@@ -94,7 +112,7 @@ const renderProfile = function(profileData) {
 
     const repoIcon = document.createElement('img');
     repoIcon.className = 'repo-icon';
-    repoIcon.src = getIconSVG('repo');
+    repoIcon.src = getImage('icons/repo.svg');
 
     repositories.append(
         repoIcon,
@@ -111,7 +129,7 @@ const renderProfile = function(profileData) {
 
     const followersIcon = document.createElement('img');
     followersIcon.className = 'followers-icon';
-    followersIcon.src = getIconSVG('followers');
+    followersIcon.src = getImage('icons/followers.svg');
 
     followers.append(
         followersIcon,
@@ -149,5 +167,7 @@ export {
     renderUsers,
     clearList,
     showEmptyListMessage,
-    hideEmptyListMessage
+    hideEmptyListMessage,
+    showLoading,
+    hideLoading
 };
