@@ -1,6 +1,5 @@
 dist
 node_modules
-README.md
 tasks.md
 gpf-template.png
 .env
