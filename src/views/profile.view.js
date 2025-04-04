@@ -30,21 +30,20 @@ const hideLoading = function() {
     }
 };
 
-const showEmptyListMessage = function() {
+const showMessage = function(message) {
     const items = document.querySelectorAll('.profile');
-    const message = document.createElement('div');
-    message.id = 'empty-list-message';
-    message.innerHTML = 'No results. Search a name.';
+    const alertMessage = document.createElement('div');
+    alertMessage.id = 'message';
+    alertMessage.innerHTML = message;
 
     if(!items.length && !document.querySelector('#loading-container')) {
-        console.log('Empty result');
-        profiles.appendChild(message);
+        profiles.appendChild(alertMessage);
     } 
 };
 
-const hideEmptyListMessage = function() {
-    if(document.querySelector('#empty-list-message')) {
-        profiles.removeChild(document.querySelector('#empty-list-message'));
+const hideMessage = function() {
+    if(document.querySelector('#message')) {
+        profiles.removeChild(document.querySelector('#message'));
     }
 };
 
@@ -166,8 +165,8 @@ export {
     renderProfile,
     renderUsers,
     clearList,
-    showEmptyListMessage,
-    hideEmptyListMessage,
+    showMessage,
+    hideMessage,
     showLoading,
     hideLoading
 };

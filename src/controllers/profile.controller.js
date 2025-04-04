@@ -1,4 +1,4 @@
-import { clearList, hideEmptyListMessage, hideLoading, renderUsers, showEmptyListMessage, showLoading } from "../views/profile.view";
+import { clearList, hideMessage, hideLoading, renderUsers, showMessage, showLoading } from "../views/profile.view";
 import { loadUser, getUsers } from "../models/profile.model";
 
 const profileController = (function() {
@@ -16,6 +16,7 @@ const profileController = (function() {
                 console.warn('No users found.');
                 renderUsers([]); // Show empty state
                 hideLoading();
+                showMessage('No users found.');
                 return;
             }
 
@@ -41,21 +42,23 @@ const profileController = (function() {
 
     // Handle user search with debounce
     const handleSearchEvent = function() {
-        searchInput.addEventListener('input', debounce(async (event) => {
-            const value = searchInput.value.trim();
-            clearList();
-            hideEmptyListMessage();
-            if(value) {
-                await searchUser(value);
-            } else {
-                showEmptyListMessage();
+        searchInput.addEventListener('keypress', debounce(async (event) => {
+            if(event.key == 'Enter') {
+                const value = searchInput.value.trim();
+                hideMessage();
+                clearList();
+                if(value) {
+                    await searchUser(value);
+                } else {
+                    showMessage('No results. Search a name.');
+                }
             }
         }, 500)); // 500ms delay
     };
 
     const init = async function() {
         handleSearchEvent();
-        showEmptyListMessage();
+        showMessage('No results. Search a name.');
     };
 
     return { init };
