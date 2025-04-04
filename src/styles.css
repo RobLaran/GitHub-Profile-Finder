@@ -220,6 +220,7 @@ footer {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
+    font-family: var(--font);
 }
 
 .profile > .profile-info > .address {
@@ -230,11 +231,12 @@ footer {
     overflow: hidden;
 }
 
-.profile > .profile-info > .repo-icon,
-.profile > .profile-info > .followers-icon {
+.profile > .profile-info .repo-icon,
+.profile > .profile-info .followers-icon {
     width: 18px;
     height: 18px;
     padding-right: 4px;
+    padding-top: 4px;
 }
 
 .profile > .profile-info > .delimiter {

@@ -68,21 +68,37 @@ const renderProfile = function(profileData) {
 
     const repositories = document.createElement('li');
     repositories.className = 'repositories';
-    repositories.innerHTML = formatNumber(profileData.repositories || 0);
     repositories.title = (profileData.repositories || '0') + ' repositories';
+
+    const repoCount = document.createElement('span');
+    repoCount.className = 'repo-count';
+    repoCount.innerHTML = formatNumber(profileData.repositories || 0);
 
     const repoIcon = document.createElement('img');
     repoIcon.className = 'repo-icon';
     repoIcon.src = getIconSVG('repo');
 
+    repositories.append(
+        repoIcon,
+        repoCount
+    );
+
     const followers = document.createElement('li');
     followers.className = 'followers';
-    followers.innerHTML = formatNumber(profileData.followers || 0);
     followers.title = (profileData.followers || '0') + ' followers';
+    
+    const followersCount  =document.createElement('span');
+    followersCount.className = 'followers-count';
+    followersCount.innerHTML = formatNumber(profileData.followers || 0);
 
     const followersIcon = document.createElement('img');
     followersIcon.className = 'followers-icon';
     followersIcon.src = getIconSVG('followers');
+
+    followers.append(
+        followersIcon,
+        followersCount
+    );
 
     let delimiter1 = document.createElement('span');
     delimiter1.className = 'delimiter';
@@ -95,10 +111,8 @@ const renderProfile = function(profileData) {
     profileInfo.append(
         address,
         delimiter1,
-        repoIcon, 
         repositories,
         delimiter2,
-        followersIcon,
         followers
     );
 
