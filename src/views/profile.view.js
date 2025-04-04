@@ -12,6 +12,24 @@ const clearList = function() {
     }
 };
 
+const showEmptyListMessage = function() {
+    const items = document.querySelectorAll('.profile');
+    const message = document.createElement('div');
+    message.id = 'empty-list-message';
+    message.innerHTML = 'No results. Search a name.';
+
+    if(!items.length) {
+        console.log('Empty result');
+        profiles.appendChild(message);
+    } 
+};
+
+const hideEmptyListMessage = function() {
+    if(document.querySelector('#empty-list-message')) {
+        profiles.removeChild(document.querySelector('#empty-list-message'));
+    }
+};
+
 const renderUsers = function(users) {
     clearList();
 
@@ -128,5 +146,8 @@ const renderProfile = function(profileData) {
 
 export { 
     renderProfile,
-    renderUsers
+    renderUsers,
+    clearList,
+    showEmptyListMessage,
+    hideEmptyListMessage
 };
