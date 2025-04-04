@@ -4,6 +4,7 @@ const formatProfile = function(data) {
     if(!data) return null;
 
     return {
+        'url': data.html_url || null,
         'loginName': data.login || null,
         'userName': data.name || null,
         'bio': data.bio || null,

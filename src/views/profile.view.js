@@ -143,6 +143,17 @@ const renderProfile = function(profileData) {
     delimiter2.className = 'delimiter';
     delimiter2.innerHTML = '•';
 
+    const profileButton = document.createElement('div');
+    profileButton.className = 'button-container';
+
+    const button = document.createElement('a');
+    button.className = 'profile-button';
+    button.innerHTML = 'View profile';
+    button.href = profileData.url;
+    button.target = '_blank';
+    
+    profileButton.appendChild(button);
+
     profileInfo.append(
         address,
         delimiter1,
@@ -155,7 +166,8 @@ const renderProfile = function(profileData) {
         profileImage,
         profileNames,
         profileBio,
-        profileInfo
+        profileInfo,
+        profileButton
     );
 
     profiles.append(list);
