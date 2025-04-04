@@ -79,23 +79,17 @@ A web app **GitHub Profile Finder** built with **JavaScript, Webpack, and the MV
 
 ## 🔧 Installation
 
-1. Clone the repository:
-    `git clone https://github.com/RobLaran/GitHub-Profile-Finder.git`
-    `cd GitHub-Profile-Finder`
+1. Clone the repository:  
+    `git clone https://github.com/RobLaran/GitHub-Profile-Finder.git`  
+    `cd GitHub-Profile-Finder`  
 
-<br> 
+2. Create *.env* file and add your github access token inside  
+    `TOKEN="YOUR-GITHUB-TOKEN"`  
 
-2. Create *.env* file and add your github access token inside
-    `TOKEN="YOUR-GITHUB-TOKEN"`
-
-2. Install dependencies:
+2. Install dependencies:  
     `npm install`  
 
-<br> 
-  
-3. Run the development server:
-    `npm run serve`
-    
-<br> 
+3. Run the development server:  
+    `npm run serve`  
 
-4. Open your browser and visit [localhost:8080](http://localhost:8080) to see the app in action.
+4. Open your browser and visit [localhost:8080](http://localhost:8080) to see the app in action.  
