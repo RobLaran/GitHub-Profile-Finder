@@ -6,14 +6,14 @@ A web app **GitHub Profile Finder** built with **JavaScript, Webpack, and the MV
 
 ## 🚀 Features
 ✅ Search for GitHub users by username  
-✅ Displays the **searched results** that are matched from username
+✅ Displays the **searched results** that are matched from username  
 ✅ Displays **user details** (name, bio, location, followers)  
 ✅ Shows **user repositories** and **user followers**  
-✅ Implements **loading indicator** while searching for users 
-✅ Displays **messages** when searching a user if there are no results 
-✅ Built using **Webpack** with modular **MVC architecture** 
-✅ Loads different **user profile** from **GitHub API**
-✅ Links the **profiles** to its github profile link 
+✅ Implements **loading indicator** while searching for users  
+✅ Displays **messages** when searching a user if there are no results  
+✅ Built using **Webpack** with modular **MVC architecture**  
+✅ Loads different **user profile** from **GitHub API**  
+✅ Links the **profiles** to its github profile link  
 
 ---
 
