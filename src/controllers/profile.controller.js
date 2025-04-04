@@ -1,5 +1,6 @@
-import { clearList, hideMessage, hideLoading, renderUsers, showMessage, showLoading } from "../views/profile.view";
+import { renderUsers } from "../views/profile.view";
 import { loadUser, getUsers } from "../models/profile.model";
+import { clearList, hideLoading, hideMessage, showLoading, showMessage } from "../utils/helpers";
 
 const profileController = (function() {
     const searchInput = document.querySelector('#search-input');
